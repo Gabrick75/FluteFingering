@@ -12,6 +12,24 @@
     />
   </head>
   <body>
+    <script>
+      // Restores the route encoded by public/404.html's redirect.
+      (function () {
+        var search = window.location.search;
+        if (search.indexOf('?p=') === -1) return;
+        var params = new URLSearchParams(search.slice(1));
+        var path = params.get('p');
+        var q = params.get('q');
+        window.history.replaceState(
+          null,
+          '',
+          window.location.pathname.replace(/\/$/, '') +
+            (path ? '/' + path : '') +
+            (q ? '?' + q.replace(/~and~/g, '&') : '') +
+            window.location.hash
+        );
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

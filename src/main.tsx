@@ -7,7 +7,7 @@ import './styles/main.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/TraversoFingering">
       <DarkModeProvider>
         <App />
       </DarkModeProvider>
