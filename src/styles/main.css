@@ -29,18 +29,48 @@ html { scroll-behavior: smooth; }
 }
 
 body.dark-mode {
-  --parchment:   #1A1008;
-  --ebony:       #E8DDD0;
-  --brass:       #D4A96A;
-  --boxwood:     #3D2B1E;
-  --leather:     #8A7A6A;
-  --cream:       #22150E;
-  --brass-light: #E0B87A;
-  --brass-dark:  #BF8B4A;
+  --parchment:   #180F08;
+  --ebony:       #EDE1D2;
+  --brass:       #D9AD70;
+  --boxwood:     #4E3722;
+  --leather:     #9C8A76;
+  --cream:       #2E1D11;
+  --brass-light: #E6BE85;
+  --brass-dark:  #C4924E;
+}
+
+/* A little candlelit depth instead of a flat near-black field. */
+body.dark-mode {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(217, 173, 112, 0.06), transparent 38%),
+    radial-gradient(circle at 88% 65%, rgba(217, 173, 112, 0.05), transparent 40%),
+    radial-gradient(circle at 20% 82%, rgba(191, 139, 74, 0.05), transparent 38%),
+    radial-gradient(ellipse at 50% 0%, #26170C 0%, #180F08 55%);
+}
+
+body.dark-mode .instrument-card {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(217, 173, 112, 0.1);
+}
+
+body.dark-mode .instrument-card:hover {
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(217, 173, 112, 0.22),
+    0 0 24px rgba(217, 173, 112, 0.12);
+}
+
+body.dark-mode .chart-legend,
+body.dark-mode .cta-button {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(217, 173, 112, 0.08);
+}
+
+body.dark-mode .header-ornament,
+body.dark-mode .header-ornament::before {
+  box-shadow: 0 0 10px rgba(217, 173, 112, 0.45);
 }
 
 body.dark-mode #fingering-chart tr:has(.hole) {
-  background: linear-gradient(180deg, #3D2B1E, #2A1B12, #3D2B1E);
+  background:
+    radial-gradient(ellipse 140% 90% at 50% -20%, rgba(191,139,74,0.10), transparent 60%),
+    linear-gradient(180deg, #3D2B1E, #2A1B12, #3D2B1E);
 }
 
 body.dark-mode .hole.closed {
@@ -82,7 +112,13 @@ body.dark-mode .hole.quarter:hover {
 body {
   margin: 0;
   padding: 0;
-  background: var(--parchment);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(191, 139, 74, 0.07), transparent 38%),
+    radial-gradient(circle at 88% 12%, rgba(90, 64, 48, 0.05), transparent 32%),
+    radial-gradient(circle at 82% 70%, rgba(191, 139, 74, 0.05), transparent 40%),
+    radial-gradient(circle at 10% 80%, rgba(90, 64, 48, 0.05), transparent 38%),
+    radial-gradient(ellipse at 50% 0%, #F6F0E4 0%, var(--parchment) 55%);
+  background-color: var(--parchment);
   color: var(--ebony);
   font-family: var(--font-body);
   font-size: 1.0625rem;
@@ -190,6 +226,61 @@ p {
 
 .site-header h1 a:hover {
   color: var(--brass);
+}
+
+/* --- Hero header (home page only) --- */
+
+.site-header--hero {
+  padding: 64px 0 44px;
+}
+
+.header-ornament {
+  width: 64px;
+  height: 1px;
+  background: var(--brass);
+  margin: 0 auto 24px;
+  position: relative;
+}
+
+.header-ornament::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  background: var(--brass);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.site-header--hero h1 {
+  font-size: 3.4rem;
+  margin: 0;
+}
+
+.hero-tagline {
+  max-width: 460px;
+  margin: 18px auto 0;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--leather);
+}
+
+@media (max-width: 640px) {
+  .site-header--hero {
+    padding: 44px 0 32px;
+  }
+
+  .site-header--hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    padding: 0 8px;
+  }
 }
 
 /* ==========================================================================
@@ -588,9 +679,13 @@ body.dark-mode #dark-toggle:hover {
   border: none;
 }
 
-/* --- Fingering rows — the silver body --- */
-#flute-chart tr:has(.hole, .flute-key) {
-  background: linear-gradient(180deg, #E5E7EA, #CDD1D6, #E5E7EA);
+/* --- Fingering rows — same wood body as the baroque chart --- */
+#flute-chart tr:has(.hole, .flute-key, .fd-cell) {
+  background: linear-gradient(180deg, #DEC9A8, #D4BD99, #DEC9A8);
+}
+
+#flute-chart.diagram-mode tr:has(.fd-cell) td {
+  padding: 8px 10px;
 }
 
 #flute-chart tr:has(.hole, .flute-key) td {
@@ -846,9 +941,7 @@ body.dark-mode .key-lever.is-pressed .kp-pad {
 }
 
 body.dark-mode #flute-chart tr:has(.hole, .flute-key) {
-  background:
-    repeating-linear-gradient(90deg, rgba(0,0,0,0.13) 0 1px, transparent 1px 4px, rgba(0,0,0,0.07) 4px 5px, transparent 5px 11px, rgba(0,0,0,0.05) 11px 12px, transparent 12px 19px),
-    linear-gradient(180deg, #3D2B1E, #2A1B12 55%, #3D2B1E);
+  background: linear-gradient(180deg, #3D2B1E, #2A1B12 55%, #3D2B1E);
 }
 
 body.dark-mode #flute-chart .hole.closed {
@@ -905,9 +998,7 @@ body.dark-mode #octave-nav .octave-link.active {
 /* Diagram rows sat on the dark page, so closed holes and pressed keys
    (black) disappeared. Set them on a wood-grain body so black/white reads. */
 body.dark-mode #flute-chart.diagram-mode tr:has(.fd-cell) {
-  background:
-    repeating-linear-gradient(90deg, rgba(0,0,0,0.13) 0 1px, transparent 1px 4px, rgba(0,0,0,0.07) 4px 5px, transparent 5px 11px, rgba(0,0,0,0.05) 11px 12px, transparent 12px 19px),
-    linear-gradient(180deg, #3D2B1E, #2A1B12 55%, #3D2B1E);
+  background: linear-gradient(180deg, #3D2B1E, #2A1B12 55%, #3D2B1E);
 }
 
 body.dark-mode #flute-chart.diagram-mode tr:has(.fd-cell) td {

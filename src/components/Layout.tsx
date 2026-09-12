@@ -17,11 +17,18 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div id="wrapper">
-      <header className="site-header">
+      <header className={isHome ? 'site-header site-header--hero' : 'site-header'}>
+        {isHome && <div className="header-ornament" aria-hidden="true" />}
         <h1>
           <Link to="/">Flute Fingering Charts</Link>
           {subtitle && <span className="subtitle">{subtitle}</span>}
         </h1>
+        {isHome && (
+          <p className="hero-tagline">
+            Every fingering drawn as it appears on the instrument itself —
+            holes, keys, and hand position, not a simplified diagram.
+          </p>
+        )}
         {!isHome && (
           <Link to="/" className="back-link">← All Instruments</Link>
         )}
