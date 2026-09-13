@@ -18,7 +18,7 @@ instrument, a data correction, a bug fix, or better documentation.
 
 ```bash
 git clone <your-fork-url>
-cd TraversoFingering
+cd FluteFingering
 npm install
 npm run dev
 ```
