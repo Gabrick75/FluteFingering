@@ -4,7 +4,7 @@ import '../styles/home.css';
 const instruments = [
   {
     path: '/baroque-flute',
-    label: 'Baroque Flute',
+    label: '1-key Baroque Flute',
     desc: 'Traverso — complete fingering chart with historical sources',
     stats: '4 octaves · 70 notes · 256 variations',
     img: `${import.meta.env.BASE_URL}images/baroque-flute.jpg`,

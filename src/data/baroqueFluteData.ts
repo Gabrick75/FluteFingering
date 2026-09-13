@@ -444,7 +444,7 @@ export const baroqueFluteData: OctaveData[] = [
       },
       {
         "noteName": "Db''",
-        "anchorName": "Db",
+        "anchorName": "Db1",
         "variations": [
           {
             "holes": "ooooooc",

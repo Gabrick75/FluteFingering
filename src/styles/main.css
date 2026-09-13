@@ -493,6 +493,21 @@ body.dark-mode #dark-toggle:hover {
   color: #fff;
 }
 
+/* Note staff — always the light "paper" look, independent of dark mode. */
+.note-header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.note-staff {
+  flex: none;
+  display: block;
+  background: #f5f1e8;
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+
 /* Octave header row */
 #fingering-chart .octave-header td {
   background: var(--brass);
@@ -1269,6 +1284,12 @@ body.dark-mode .fd-legend.quarter {
 
   #fingering-chart .note-header h3 a {
     font-size: 1rem;
+  }
+
+  .note-staff {
+    transform: scale(0.78);
+    transform-origin: left center;
+    margin-right: -20px;
   }
 
   #fingering-chart > tbody:first-of-type tr:nth-child(-n+4) td {

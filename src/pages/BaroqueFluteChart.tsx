@@ -1,6 +1,7 @@
 import { useEffect, Fragment } from 'react';
 import { baroqueFluteData, type OctaveData } from '../data/baroqueFluteData';
 import OctaveNav from '../components/OctaveNav';
+import NoteStaff from '../components/NoteStaff';
 
 const HOLE_CLASS: Record<string, string> = {
   c: 'closed',
@@ -34,7 +35,10 @@ function renderNote(note: { noteName: string; anchorName: string; variations: Ar
     <Fragment key={note.anchorName}>
       <tr className="note-header">
         <td colSpan={11}>
-          <h3><a id={note.anchorName}>{note.noteName}</a></h3>
+          <div className="note-header-row">
+            <NoteStaff noteName={note.noteName} className="note-staff" />
+            <h3><a id={note.anchorName}>{note.noteName}</a></h3>
+          </div>
         </td>
       </tr>
       {note.variations.map((v, i) => renderFingeringRow(v.holes, v.sources))}
