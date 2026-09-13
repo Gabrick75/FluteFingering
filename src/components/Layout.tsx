@@ -5,7 +5,7 @@ import TrebleClefSprite from './TrebleClefSprite';
 import type { ReactNode } from 'react';
 
 const SUBTITLE_MAP: Record<string, string> = {
-  '/baroque-flute': 'Baroque Flute',
+  '/baroque-flute': '1-key Baroque Flute',
   '/transverse-flute': 'Transverse Flute',
   '/piccolo': 'Piccolo',
   '/recorder': 'Recorder',
