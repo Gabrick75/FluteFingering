@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import DarkToggle from './DarkToggle';
 import BackToTop from './BackToTop';
+import TrebleClefSprite from './TrebleClefSprite';
 import type { ReactNode } from 'react';
 
 const SUBTITLE_MAP: Record<string, string> = {
@@ -17,6 +18,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div id="wrapper">
+      <TrebleClefSprite />
       <header className={isHome ? 'site-header site-header--hero' : 'site-header'}>
         {isHome && <div className="header-ornament" aria-hidden="true" />}
         <h1>

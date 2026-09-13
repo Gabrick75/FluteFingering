@@ -3,6 +3,7 @@ import { type FluteOctave, type FluteNote, type FluteFingering } from '../data/t
 import OctaveNav from './OctaveNav';
 import KeyLever from './KeyLever';
 import FluteDiagram from './FluteDiagram';
+import NoteStaff from './NoteStaff';
 
 const HOLE_CLASS: Record<string, string> = {
   '1': 'closed',
@@ -117,7 +118,10 @@ function renderNote(note: FluteNote, footKeys: string[], diagram: boolean, instr
     <Fragment key={note.anchorName}>
       <tr className="note-header">
         <td colSpan={COLSPAN}>
-          <h3><a id={note.anchorName}>{note.noteName}</a></h3>
+          <div className="note-header-row">
+            <NoteStaff noteName={note.noteName} className="note-staff" />
+            <h3><a id={note.anchorName}>{note.noteName}</a></h3>
+          </div>
         </td>
       </tr>
       {note.variations.map((v) => renderFingeringRow(v, footKeys, note.noteName, diagram, instrument))}
