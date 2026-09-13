@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gabrick75.github.io/TraversoFingering/sitemap.xml
+Sitemap: https://gabrick75.github.io/FluteFingering/sitemap.xml
