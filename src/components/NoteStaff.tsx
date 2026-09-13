@@ -94,7 +94,12 @@ export default function NoteStaff({ noteName, className }: NoteStaffProps) {
   const clefTopY = stepY(2) - CLEF_ANCHOR_FRACTION * CLEF_HEIGHT - CLEF_LIFT;
   const clefBottomY = clefTopY + CLEF_HEIGHT;
 
-  const ottavaLabelY = -OTTAVA_GAP;
+  // Anchored above the clef (not centered over the note) so it never collides
+  // with the notehead or ledger lines, no matter how high the note sits —
+  // also closer to how real scores place an "8va" mark, at the start of the
+  // affected passage rather than over each individual note.
+  const ottavaLabelX = CLEF_X + CLEF_WIDTH / 2;
+  const ottavaLabelY = clefTopY - OTTAVA_GAP;
 
   const contentTops = [0, clefTopY, noteY - NOTE_RY, ...ledgerYs, ...(ottava.label ? [ottavaLabelY - OTTAVA_FONT_SIZE] : [])];
   const contentBottoms = [STAFF_BOTTOM_Y, clefBottomY, noteY + NOTE_RY, ...ledgerYs];
@@ -116,7 +121,7 @@ export default function NoteStaff({ noteName, className }: NoteStaffProps) {
     >
       {ottava.label && (
         <text
-          x={STAFF_WIDTH / 2}
+          x={ottavaLabelX}
           y={ottavaLabelY}
           fill={INK}
           fontSize={OTTAVA_FONT_SIZE}
