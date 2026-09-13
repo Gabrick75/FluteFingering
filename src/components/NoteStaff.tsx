@@ -1,4 +1,4 @@
-import { parseNoteName, staffStep, ledgerLineSteps, type Accidental } from '../utils/pitch';
+import { parseNoteName, staffStep, ledgerLineSteps, ottavaShift, type Accidental } from '../utils/pitch';
 
 // ── SIZE KNOB ────────────────────────────────────────────────────────────
 // Edit this one number and save — Vite hot-reloads instantly. It scales the
@@ -32,6 +32,8 @@ const PADDING = 3 * SCALE;
 const LINE_STROKE = 0.9 * SCALE;
 const NOTE_RX = 4 * SCALE;
 const NOTE_RY = 3 * SCALE;
+const OTTAVA_FONT_SIZE = 9 * SCALE;
+const OTTAVA_GAP = 3 * SCALE; // space between the top staff line and the "8va" label
 
 const INK = '#241608';
 
@@ -78,8 +80,12 @@ export default function NoteStaff({ noteName, className }: NoteStaffProps) {
   if (!pitch) return null;
 
   const step = staffStep(pitch);
-  const noteY = stepY(step);
-  const ledgerYs = ledgerLineSteps(step).map(stepY);
+  // From C6 up, draw the note an octave (or two) lower and flag it with an
+  // "8va"/"15ma" mark instead of piling on ledger lines.
+  const ottava = ottavaShift(step);
+  const drawnStep = step - ottava.octaves * 7;
+  const noteY = stepY(drawnStep);
+  const ledgerYs = ledgerLineSteps(drawnStep).map(stepY);
 
   // Raises just the clef glyph by one staff line-space, independent of the
   // staff lines, notehead, and accidental — edit the multiplier to nudge
@@ -88,7 +94,9 @@ export default function NoteStaff({ noteName, className }: NoteStaffProps) {
   const clefTopY = stepY(2) - CLEF_ANCHOR_FRACTION * CLEF_HEIGHT - CLEF_LIFT;
   const clefBottomY = clefTopY + CLEF_HEIGHT;
 
-  const contentTops = [0, clefTopY, noteY - NOTE_RY, ...ledgerYs];
+  const ottavaLabelY = -OTTAVA_GAP;
+
+  const contentTops = [0, clefTopY, noteY - NOTE_RY, ...ledgerYs, ...(ottava.label ? [ottavaLabelY - OTTAVA_FONT_SIZE] : [])];
   const contentBottoms = [STAFF_BOTTOM_Y, clefBottomY, noteY + NOTE_RY, ...ledgerYs];
   const top = Math.min(...contentTops) - PADDING;
   const bottom = Math.max(...contentBottoms) + PADDING;
@@ -100,8 +108,25 @@ export default function NoteStaff({ noteName, className }: NoteStaffProps) {
       height={bottom - top}
       viewBox={`0 ${top} ${STAFF_WIDTH} ${bottom - top}`}
       role="img"
-      aria-label={`Staff notation for ${noteName}`}
+      aria-label={
+        ottava.label
+          ? `Staff notation for ${noteName}, drawn ${ottava.label} lower than written`
+          : `Staff notation for ${noteName}`
+      }
     >
+      {ottava.label && (
+        <text
+          x={STAFF_WIDTH / 2}
+          y={ottavaLabelY}
+          fill={INK}
+          fontSize={OTTAVA_FONT_SIZE}
+          fontStyle="italic"
+          textAnchor="middle"
+        >
+          {ottava.label}
+        </text>
+      )}
+
       {[0, 2, 4, 6, 8].map((s) => (
         <line
           key={s}

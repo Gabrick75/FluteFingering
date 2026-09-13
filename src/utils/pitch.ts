@@ -72,3 +72,24 @@ export function ledgerLineSteps(step: number): number[] {
   }
   return lines;
 }
+
+// From C6 up (staffStep 12 — the 2nd ledger line above the staff), draw the
+// note an octave (or more) lower and flag it with an "8va"/"15ma" mark
+// instead of piling on ledger lines. One octave = 7 diatonic steps.
+const OTTAVA_THRESHOLD_STEP = 12;
+const STEPS_PER_OCTAVE = 7;
+
+export interface OttavaShift {
+  /** How many octaves lower the note is actually drawn (0 = drawn as written). */
+  octaves: number;
+  /** "8va", "15ma", "22ma", ... — undefined when no shift applies. */
+  label?: string;
+}
+
+export function ottavaShift(step: number): OttavaShift {
+  let octaves = 0;
+  while (step - octaves * STEPS_PER_OCTAVE >= OTTAVA_THRESHOLD_STEP) octaves++;
+  if (octaves === 0) return { octaves };
+  const interval = octaves * STEPS_PER_OCTAVE + 1; // 8, 15, 22, ...
+  return { octaves, label: interval === 8 ? '8va' : `${interval}ma` };
+}
