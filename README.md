@@ -5,14 +5,31 @@
 **Multi-instrument fingering charts for historical and modern flutes** — built for
 quick consultation on any device, from a phone during practice to a text-only browser.
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-gabrick75.github.io%2FFluteFingering-2ea44f?style=flat-square&logo=googlechrome&logoColor=white)](https://gabrick75.github.io/FluteFingering/)
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white&style=flat-square)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white&style=flat-square)](https://www.typescriptlang.org)
 [![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white&style=flat-square)](https://vitejs.dev)
 [![React Router](https://img.shields.io/badge/React%20Router-v6-CA4245?logo=react-router&logoColor=white&style=flat-square)](https://reactrouter.com)
+[![License](https://img.shields.io/badge/license-unspecified-lightgrey?style=flat-square)](#license)
+
+### 🔗 [**Try it live → gabrick75.github.io/FluteFingering**](https://gabrick75.github.io/FluteFingering/)
 
 </div>
 
 ---
+
+## Table of Contents
+
+- [Screenshots](#screenshots)
+- [About](#about)
+- [Features](#features)
+- [Instruments](#instruments)
+- [Getting Started](#getting-started)
+- [Documentation](#documentation)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Credits](#credits)
+- [License](#license)
 
 ## Screenshots
 
