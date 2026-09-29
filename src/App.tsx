@@ -5,6 +5,7 @@ import BaroqueFluteChart from './pages/BaroqueFluteChart';
 import TransverseFluteChart from './pages/TransverseFluteChart';
 import PiccoloChart from './pages/PiccoloChart';
 import RecorderChart from './pages/RecorderChart';
+import BaroqueRecorderChart from './pages/BaroqueRecorderChart';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/transverse-flute" element={<TransverseFluteChart />} />
         <Route path="/piccolo" element={<PiccoloChart />} />
         <Route path="/recorder" element={<RecorderChart />} />
+        <Route path="/baroque-recorder" element={<BaroqueRecorderChart />} />
       </Routes>
     </Layout>
   );

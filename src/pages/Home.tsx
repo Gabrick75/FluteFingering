@@ -39,6 +39,13 @@ const instruments: Instrument[] = [
     stats: '3 octaves · 27 notes · 30 variations',
     img: `${import.meta.env.BASE_URL}images/recorder.jpeg`,
   },
+  {
+    path: '/baroque-recorder',
+    label: 'Baroque Recorder',
+    desc: 'Soprano recorder, Baroque (English) fingering system',
+    stats: '3 octaves · 27 notes · 30 variations',
+    img: `${import.meta.env.BASE_URL}images/recorder.jpeg`,
+  },
 ];
 
 function InstrumentCard(inst: Instrument) {
