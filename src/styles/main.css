@@ -1611,3 +1611,134 @@ body.dark-mode .fd-key.is-pressed .fd-shape,
 body.dark-mode .fd-key.is-pressed .fd-closed {
   fill: #000;
 }
+
+/* ==========================================================================
+   German Recorder Fingering Chart
+   Played vertically — each note is a card with the staff on top and the
+   fingering diagram (thumb hole + 7 finger holes) stacked below it.
+   ========================================================================== */
+
+.recorder-quick-jump {
+  max-width: 780px;
+  margin: 0 auto 8px;
+  font-family: var(--font-utility);
+  font-size: 0.8rem;
+  color: var(--leather);
+  text-align: center;
+}
+
+.recorder-quick-jump p {
+  margin: 4px 0;
+}
+
+.recorder-quick-jump a {
+  color: var(--brass-dark);
+}
+
+.recorder-octave {
+  max-width: 960px;
+  margin: 0 auto;
+  scroll-margin-top: 70px;
+}
+
+.recorder-octave-header {
+  background: var(--brass);
+  color: var(--cream);
+  text-align: center;
+  padding: 6px 16px;
+  margin: 24px 0 16px;
+  font-family: var(--font-utility);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+.recorder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+  padding: 0 8px;
+}
+
+.recorder-note-card {
+  scroll-margin-top: 80px;
+  text-align: center;
+  background: linear-gradient(180deg, #DEC9A8, #D4BD99, #DEC9A8);
+  border-radius: 8px;
+  padding: 12px 8px;
+}
+
+.recorder-note-card h3 {
+  margin: 2px 0 6px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--ebony);
+}
+
+.recorder-note-card .note-staff {
+  margin: 0 auto;
+}
+
+.recorder-variation {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.recorder-variation:first-of-type {
+  border-top: none;
+}
+
+.recorder-diagram {
+  width: 80px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.recorder-desc {
+  font-family: var(--font-utility);
+  font-size: 0.7rem;
+  color: var(--leather);
+  line-height: 1.3;
+  margin: 4px 0 0;
+}
+
+.recorder-desc .src {
+  color: var(--brass-dark);
+}
+
+/* Recorder body — a pale, turned-wood silhouette so the holes read clearly */
+.rd-body {
+  fill: var(--cream);
+  stroke: var(--ebony);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.rd-joint {
+  fill: var(--ebony);
+  opacity: 0.2;
+}
+
+body.dark-mode .recorder-note-card {
+  background: linear-gradient(180deg, #4A3B2A, #3E3020, #4A3B2A);
+}
+
+body.dark-mode .recorder-note-card h3 {
+  color: var(--cream);
+}
+
+@media (max-width: 480px) {
+  .recorder-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+  }
+
+  .recorder-diagram {
+    width: 66px;
+  }
+}

@@ -9,14 +9,14 @@ const SUBTITLE_MAP: Record<string, string> = {
   '/baroque-flute': '1-key Baroque Flute',
   '/transverse-flute': 'Transverse Flute',
   '/piccolo': 'Piccolo',
-  '/recorder': 'Recorder',
+  '/recorder': 'German Recorder',
 };
 
 const PAGE_META: Record<string, { title: string; description: string }> = {
   '/': {
-    title: 'Flute Fingering Charts — Baroque Flute, Transverse Flute, Piccolo',
+    title: 'Flute Fingering Charts — Baroque Flute, Transverse Flute, Piccolo, Recorder',
     description:
-      'Free fingering charts for the 1-key baroque traverso, modern transverse flute, and piccolo — every fingering drawn as it appears on the instrument, with historical sources.',
+      'Free fingering charts for the 1-key baroque traverso, modern transverse flute, piccolo, and German recorder — every fingering drawn as it appears on the instrument, with historical sources.',
   },
   '/baroque-flute': {
     title: '1-key Baroque Flute Fingering Chart | Flute Fingering Charts',
@@ -34,8 +34,9 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
       'Complete piccolo fingering chart, covering every note and alternate fingering across three octaves.',
   },
   '/recorder': {
-    title: 'Recorder Fingering Chart | Flute Fingering Charts',
-    description: 'Recorder (Blockflöte) fingering chart — coming soon.',
+    title: 'German Recorder Fingering Chart | Flute Fingering Charts',
+    description:
+      'Complete soprano recorder (Blockflöte) fingering chart using the German fingering system, covering every note across three octaves.',
   },
 };
 

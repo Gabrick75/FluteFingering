@@ -1,7 +1,16 @@
 import { Link } from 'react-router-dom';
 import '../styles/home.css';
 
-const instruments = [
+interface Instrument {
+  path: string;
+  label: string;
+  desc: string;
+  img: string;
+  stats?: string;
+  badge?: string;
+}
+
+const instruments: Instrument[] = [
   {
     path: '/baroque-flute',
     label: '1-key Baroque Flute',
@@ -25,14 +34,14 @@ const instruments = [
   },
   {
     path: '/recorder',
-    label: 'Recorder',
-    desc: 'Recorder (Blockflöte) fingering chart',
+    label: 'German Recorder',
+    desc: 'Soprano recorder (Blockflöte), German fingering system',
+    stats: '3 octaves · 27 notes · 30 variations',
     img: `${import.meta.env.BASE_URL}images/recorder.jpeg`,
-    badge: 'Coming soon',
   },
 ];
 
-function InstrumentCard(inst: (typeof instruments)[number]) {
+function InstrumentCard(inst: Instrument) {
   const body = (
     <>
       <img src={inst.img} alt={inst.label} className="instrument-card-img" loading="lazy" />

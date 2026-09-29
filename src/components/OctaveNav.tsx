@@ -4,7 +4,7 @@ export default function OctaveNav() {
   const [octaves, setOctaves] = useState<number[]>([]);
 
   useEffect(() => {
-    const bodies = [...document.querySelectorAll<HTMLElement>('tbody[id^="octave-"]')]
+    const bodies = [...document.querySelectorAll<HTMLElement>('[id^="octave-"]')]
       .map((el) => Number(el.id.replace('octave-', '')))
       .filter((n) => Number.isFinite(n))
       .sort((a, b) => a - b);
